@@ -39,7 +39,7 @@ let button = document.getElementById("frank").addEventListener("click", function
     daysDiv.classList.add("bg-success");
 
     let input = document.getElementById("input");
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${input.value}&APPID=be8257068799ca9f1eccf80a6e84c26f`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input.value}&APPID=be8257068799ca9f1eccf80a6e84c26f`)
         .then(response => response.json())
         .then(data => {
             console.log(data);

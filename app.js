@@ -31,7 +31,7 @@ function average(array){
 }
 
 
-let button = document.getElementById("run").addEventListener("click", function () {
+let button = document.getElementById("frank").addEventListener("click", function () {
     //displaying green background
     frank.style.display = "none";
     daysDiv.style.visibility = "visible";

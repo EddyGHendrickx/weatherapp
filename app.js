@@ -26,7 +26,7 @@ daysDiv.style.visibility = "hidden";
 
 
 //function to calculate average of array (temperature in this case)
-function average(array){
+function average(array) {
     return Math.round(array.reduce((a, b) => a + b) / array.length);
 }
 
@@ -48,11 +48,11 @@ let button = document.getElementById("frank").addEventListener("click", function
             let discOfAllDays = [];
             let iconOfAllDays = [];
             // Pushing only the temperature of every iteration in new array
-            for (i = 0;i < data.list.length; i++){
+            for (i = 0; i < data.list.length; i++) {
                 tempOfAllDays.push(data.list[i].main.temp);
             }
             //Pushing the description, every 8 iterations, so I have 5 elements(one for each day)
-            for (o = 0;o < data.list.length; o++){
+            for (o = 0; o < data.list.length; o++) {
                 discOfAllDays.push(data.list[o].weather[0].description);
                 iconOfAllDays.push(data.list[o].weather[0].icon);
                 o++;
@@ -65,11 +65,11 @@ let button = document.getElementById("frank").addEventListener("click", function
 
             }
             //Slicing big array into smaller arrays, per day
-            var tempDay1 = tempOfAllDays.slice(0,8);
-            var tempDay2 = tempOfAllDays.slice(8,16);
-            var tempDay3 = tempOfAllDays.slice(16,24);
-            var tempDay4 = tempOfAllDays.slice(24,32);
-            var tempDay5 = tempOfAllDays.slice(32,40);
+            var tempDay1 = tempOfAllDays.slice(0, 8);
+            var tempDay2 = tempOfAllDays.slice(8, 16);
+            var tempDay3 = tempOfAllDays.slice(16, 24);
+            var tempDay4 = tempOfAllDays.slice(24, 32);
+            var tempDay5 = tempOfAllDays.slice(32, 40);
 
             // Averaging temperature, and converting to Celcius
             var avgTempDay1 = average(tempDay1) - 273;
@@ -106,7 +106,6 @@ let button = document.getElementById("frank").addEventListener("click", function
 
             daysDiv.innerHTML = "THIS DOESN'T EXIST"
         });
-
 
 
 });

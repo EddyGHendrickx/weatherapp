@@ -2,58 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gaegu&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet">
     <title>Weather app</title>
 </head>
 
-    <h1 class="d-flex justify-content-center">Oh, mighty Frank, tell me the weather</h1>
-    <div id="displayWeather" class="d-flex justify-content-center">
-        <input type="text" class="d-flex justify-content-center" id="input" placeholder="Enter your city">
-    </div>
+<h1 class="d-flex justify-content-center">Oh, mighty Frank, tell me the weather</h1>
+<div class="d-flex justify-content-center" id="displayWeather">
+    <input class="d-flex justify-content-center" id="input" placeholder="Enter your city" type="text">
+</div>
 
-<div id="days" class="d-flex container flex-nowrap justify-content-around text-center mt-5">
-    <div id="dayOne" class="card flex-column bg-warning m-2">
+<div class="d-flex container flex-nowrap justify-content-around text-center mt-5" id="days">
+    <div class="card flex-column bg-warning m-2" id="dayOne">
         <p id="tempDayOne"></p>
-        <div><img id="iconDayOne" alt="icon"></div>
+        <div><img alt="icon" id="iconDayOne"></div>
         <p id="descDayOne"></p>
     </div>
-    <div id="dayTwo" class="card flex-column bg-warning m-2">
+    <div class="card flex-column bg-warning m-2" id="dayTwo">
         <p id="tempDayTwo"></p>
-        <div><img id="iconDayTwo" alt="icon"></div>
+        <div><img alt="icon" id="iconDayTwo"></div>
         <p id="descDayTwo"></p>
 
     </div>
-    <div id="dayThree" class="card flex-column bg-warning m-2">
+    <div class="card flex-column bg-warning m-2" id="dayThree">
         <p id="tempDayThree"></p>
-        <div><img id="iconDayThree" alt="icon"></div>
+        <div><img alt="icon" id="iconDayThree"></div>
         <p id="descDayThree"></p>
 
     </div>
-    <div id="dayFour" class="card flex-column bg-warning m-2">
+    <div class="card flex-column bg-warning m-2" id="dayFour">
         <p id="tempDayFour"></p>
-        <div><img id="iconDayFour" alt="icon"></div>
+        <div><img alt="icon" id="iconDayFour"></div>
         <p id="descDayFour"></p>
 
     </div>
-    <div id="dayFive" class="card flex-column bg-warning m-2">
+    <div class="card flex-column bg-warning m-2" id="dayFive">
         <p id="tempDayFive"></p>
-        <div><img id="iconDayFive" alt="icon"></div>
+        <div><img alt="icon" id="iconDayFive"></div>
         <p id="descDayFive"></p>
 
     </div>
 </div>
 
-<div id="frank" class="d-flex justify-content-center"><img src="images/Frank.jpg" alt="weerman" id="frankImage" style="height:300px;width:300px"></div>
-
-
-
+<div class="d-flex justify-content-center" id="frank"><img alt="weerman" id="frankImage" src="images/Frank.jpg" style="height:300px;width:300px"></div>
 
 
 <body>

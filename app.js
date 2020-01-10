@@ -12,7 +12,15 @@ let descDayHTML3 = document.getElementById("descDayThree");
 let descDayHTML4 = document.getElementById("descDayFour");
 let descDayHTML5 = document.getElementById("descDayFive");
 
+let iconDay1 = document.getElementById("iconDayOne");
+let iconDay2 = document.getElementById("iconDayTwo");
+let iconDay3 = document.getElementById("iconDayThree");
+let iconDay4 = document.getElementById("iconDayFour");
+let iconDay5 = document.getElementById("iconDayFive");
+
+
 let daysDiv = document.getElementById("days");
+daysDiv.style.visibility = "hidden";
 
 //function to calculate average of array (temperature in this case)
 function average(array){
@@ -21,6 +29,9 @@ function average(array){
 
 
 let button = document.getElementById("run").addEventListener("click", function () {
+    //displaying green background
+    daysDiv.style.visibility = "visible";
+
     daysDiv.classList.add("bg-success");
 
     let input = document.getElementById("input");
@@ -31,13 +42,15 @@ let button = document.getElementById("run").addEventListener("click", function (
             //Making empty array, to push new elements in it
             let tempOfAllDays = [];
             let discOfAllDays = [];
+            let iconOfAllDays = [];
             // Pushing only the temperature of every iteration in new array
             for (i = 0;i < data.list.length; i++){
                 tempOfAllDays.push(data.list[i].main.temp);
             }
-            //Pushing the description, every 8 iterations, so I have 5 elements(for each day)
+            //Pushing the description, every 8 iterations, so I have 5 elements(one for each day)
             for (o = 0;o < data.list.length; o++){
                 discOfAllDays.push(data.list[o].weather[0].description);
+                iconOfAllDays.push(data.list[o].weather[0].icon);
                 o++;
                 o++;
                 o++;
@@ -47,7 +60,6 @@ let button = document.getElementById("run").addEventListener("click", function (
                 o++;
 
             }
-
             //Slicing big array into smaller arrays, per day
             var tempDay1 = tempOfAllDays.slice(0,8);
             var tempDay2 = tempOfAllDays.slice(8,16);
@@ -61,6 +73,13 @@ let button = document.getElementById("run").addEventListener("click", function (
             var avgTempDay3 = average(tempDay3) - 273;
             var avgTempDay4 = average(tempDay4) - 273;
             var avgTempDay5 = average(tempDay5) - 273;
+
+            //Icons
+            iconDay1.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[0]}@2x.png`);
+            iconDay2.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[1]}@2x.png`);
+            iconDay3.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[2]}@2x.png`);
+            iconDay4.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[3]}@2x.png`);
+            iconDay5.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[4]}@2x.png`);
 
             //Putting temp in HTML
             tempDayHTML1.innerHTML = `Today's temperature in ${input.value} is ${avgTempDay1.toString()}°C`;

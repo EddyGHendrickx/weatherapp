@@ -18,18 +18,22 @@ let iconDay3 = document.getElementById("iconDayThree");
 let iconDay4 = document.getElementById("iconDayFour");
 let iconDay5 = document.getElementById("iconDayFive");
 
+let frank = document.getElementById("frank");
+
 
 let daysDiv = document.getElementById("days");
 daysDiv.style.visibility = "hidden";
 
+
 //function to calculate average of array (temperature in this case)
 function average(array){
-    return Math.floor(array.reduce((a, b) => a + b) / array.length);
+    return Math.round(array.reduce((a, b) => a + b) / array.length);
 }
 
 
 let button = document.getElementById("run").addEventListener("click", function () {
     //displaying green background
+    frank.style.display = "none";
     daysDiv.style.visibility = "visible";
 
     daysDiv.classList.add("bg-success");

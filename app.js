@@ -35,13 +35,11 @@ weekdays[4] = "Thursday";
 weekdays[5] = "Friday";
 weekdays[6] = "Saturday";
 
-console.log(weekdays[toDay.getDay()+1]);
-
-
 //function to calculate average of array (temperature in this case)
 function average(array) {
     return Math.round(array.reduce((a, b) => a + b) / array.length);
 }
+let input = document.getElementById("input");
 
 
 let button = document.getElementById("frank").addEventListener("click", function () {
@@ -49,9 +47,8 @@ let button = document.getElementById("frank").addEventListener("click", function
     frank.style.display = "none";
     daysDiv.style.visibility = "visible";
 
-    daysDiv.classList.add("bg-success");
+    daysDiv.style.backgroundColor = "lightblue";
 
-    let input = document.getElementById("input");
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input.value}&APPID=be8257068799ca9f1eccf80a6e84c26f`)
         .then(response => response.json())
         .then(data => {
@@ -99,11 +96,11 @@ let button = document.getElementById("frank").addEventListener("click", function
             iconDay5.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[4]}@2x.png`);
 
             //Putting temp in HTML
-            tempDayHTML1.innerHTML = `Today's temperature in ${input.value} is ${avgTempDay1.toString()}°C`;
-            tempDayHTML2.innerHTML = `Tomorrow's temperature in ${input.value} is ${avgTempDay2.toString()}°C`;
-            tempDayHTML3.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+2]} is ${avgTempDay3.toString()}°C`;
-            tempDayHTML4.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+3]} is ${avgTempDay4.toString()}°C`;
-            tempDayHTML5.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+4]} is ${avgTempDay5.toString()}°C`;
+            tempDayHTML1.innerHTML = `Today </br> <strong>${avgTempDay1.toString()}°C</strong>`;
+            tempDayHTML2.innerHTML = `Tomorrow </br> ${avgTempDay2.toString()}°C`;
+            tempDayHTML3.innerHTML = `${weekdays[toDay.getDay()+2]} </br> ${avgTempDay3.toString()}°C`;
+            tempDayHTML4.innerHTML = `${weekdays[toDay.getDay()+3]} </br> ${avgTempDay4.toString()}°C`;
+            tempDayHTML5.innerHTML = `${weekdays[toDay.getDay()+4]} </br> ${avgTempDay5.toString()}°C`;
 
             //Putting desc in HTML
             descDayHTML1.innerHTML = `We're expecting ${discOfAllDays[0].toString()}`;
@@ -112,6 +109,7 @@ let button = document.getElementById("frank").addEventListener("click", function
             descDayHTML4.innerHTML = `We're expecting ${discOfAllDays[3].toString()}`;
             descDayHTML5.innerHTML = `We're expecting ${discOfAllDays[4].toString()}`;
 
+            getPhoto();
 
         })
         .catch(function (error) {
@@ -122,4 +120,14 @@ let button = document.getElementById("frank").addEventListener("click", function
 
 
 });
+
+
+async function getPhoto(){
+    let response = await fetch(`https://api.unsplash.com/search/photos?query=${input.value}&client_id=8b3303518e733b03bb9fbe890041915da381de31ef0602ad71dc8adfd4b79f83`);
+    let data = await response.json();
+    console.log(data.results[3]);
+    let bgPicture = data.results[2].urls.full;
+    document.body.style.backgroundImage = `url(${bgPicture})`;
+}
+
 

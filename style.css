@@ -8,3 +8,18 @@ h1{
     color: rebeccapurple;
     font-size: 60px;
 }
+
+body {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.innerCards {
+    background-color: #0f6674;
+}
+
+#dayOne {
+    background-color: #64ffe1;
+
+}

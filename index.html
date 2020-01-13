@@ -13,54 +13,46 @@
     <title>Weather app</title>
 </head>
 
-<h1 class="d-flex justify-content-center pt-4">Oh, mighty Frank, tell me the weather</h1>
-<div class="d-flex">
+<h1 class="d-flex justify-content-center pt-1 container-fluid">Oh, mighty Frank, tell me the weather</h1>
+<h2 id="cityName" class="d-flex justify-content-center container-fluid"></h2>
+<div class="d-flex flex-column flex-md-row">
     <div class="container mt-5">
         <div class="d-flex justify-content-center" id="displayWeather">
-            <input class="d-flex justify-content-center" id="input" placeholder="Enter your city" type="text">
+            <input class="d-flex justify-content-center rounded" id="input" placeholder="Enter your city" type="text">
         </div>
         <div class="d-flex justify-content-center mt-5" id="frank"><img alt="weerman" id="frankImage" src="images/Frank.png"
                                                                    style="height:300px;width:300px"></div>
     </div>
 
     <div class="d-flex container flex-nowrap justify-content-around text-center mt-3 mr-5 rounded" id="days">
-        <div class="rounded flex-column p-2 m-2" id="dayOne">
+        <div class="rounded flex-column p-2 m-2 align-content-center" id="dayOne">
             <div>
                 <p id="tempDayOne"></p>
                 <div><img alt="icon" id="iconDayOne"></div>
-
                 <p id="descDayOne"></p>
             </div>
         </div>
         <div class="col">
             <div class="innerCards rounded p-2 justify-content-between d-flex m-2" id="dayTwo">
-                <div><img alt="icon" id="iconDayTwo"></div>
-                <div>
                     <p id="tempDayTwo"></p>
-                    <p id="descDayTwo"></p>
-                </div>
+                <div><img alt="icon" id="iconDayTwo"></div>
+                <p id="descDayTwo"></p>
             </div>
             <div class="d-flex innerCards rounded p-2 justify-content-between m-2" id="dayThree">
-                <div><img alt="icon" id="iconDayThree"></div>
-                <div>
                     <p id="tempDayThree"></p>
-                    <p id="descDayThree"></p>
-                </div>
+                <div><img alt="icon" id="iconDayThree"></div>
+                <p id="descDayThree"></p>
             </div>
             <div class="d-flex innerCards rounded p-2 justify-content-between m-2" id="dayFour">
-                <div><img alt="icon" id="iconDayFour"></div>
-                <div>
                     <p id="tempDayFour"></p>
-                    <p id="descDayFour"></p>
-                </div>
+                <div><img alt="icon" id="iconDayFour"></div>
+                <p id="descDayFour"></p>
 
             </div>
             <div class="d-flex innerCards rounded p-2 justify-content-between m-2" id="dayFive">
-                <div><img alt="icon" id="iconDayFive"></div>
-                <div>
                     <p id="tempDayFive"></p>
-                    <p id="descDayFive"></p>
-                </div>
+                <div><img alt="icon" id="iconDayFive"></div>
+                <p id="descDayFive"></p>
             </div>
         </div>
     </div>

@@ -18,6 +18,8 @@ let iconDay3 = document.getElementById("iconDayThree");
 let iconDay4 = document.getElementById("iconDayFour");
 let iconDay5 = document.getElementById("iconDayFive");
 
+let cityName = document.getElementById("cityName");
+
 let frank = document.getElementById("frank");
 
 
@@ -52,7 +54,9 @@ let button = document.getElementById("frank").addEventListener("click", function
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input.value}&APPID=be8257068799ca9f1eccf80a6e84c26f`)
         .then(response => response.json())
         .then(data => {
+            getPhoto();
             console.log(data);
+            cityName.innerHTML = data.city.name;
             //Making empty array, to push new elements in it
             let tempOfAllDays = [];
             let discOfAllDays = [];
@@ -96,20 +100,19 @@ let button = document.getElementById("frank").addEventListener("click", function
             iconDay5.setAttribute("src", `http://openweathermap.org/img/wn/${iconOfAllDays[4]}@2x.png`);
 
             //Putting temp in HTML
-            tempDayHTML1.innerHTML = `Today </br> <strong>${avgTempDay1.toString()}°C</strong>`;
+            tempDayHTML1.innerHTML = `Today </br> <strong id="tempToday">${avgTempDay1.toString()}°C</strong>`;
             tempDayHTML2.innerHTML = `Tomorrow </br> ${avgTempDay2.toString()}°C`;
             tempDayHTML3.innerHTML = `${weekdays[toDay.getDay()+2]} </br> ${avgTempDay3.toString()}°C`;
             tempDayHTML4.innerHTML = `${weekdays[toDay.getDay()+3]} </br> ${avgTempDay4.toString()}°C`;
             tempDayHTML5.innerHTML = `${weekdays[toDay.getDay()+4]} </br> ${avgTempDay5.toString()}°C`;
 
             //Putting desc in HTML
-            descDayHTML1.innerHTML = `We're expecting ${discOfAllDays[0].toString()}`;
-            descDayHTML2.innerHTML = `We're expecting ${discOfAllDays[1].toString()}`;
-            descDayHTML3.innerHTML = `We're expecting ${discOfAllDays[2].toString()}`;
-            descDayHTML4.innerHTML = `We're expecting ${discOfAllDays[3].toString()}`;
-            descDayHTML5.innerHTML = `We're expecting ${discOfAllDays[4].toString()}`;
+            descDayHTML1.innerHTML = `<strong> ${discOfAllDays[0].toString()}</strong>`;
+            descDayHTML2.innerHTML = `<strong> ${discOfAllDays[1].toString()}</strong>`;
+            descDayHTML3.innerHTML = `<strong> ${discOfAllDays[2].toString()}</strong>`;
+            descDayHTML4.innerHTML = `<strong> ${discOfAllDays[3].toString()}</strong>`;
+            descDayHTML5.innerHTML = `<strong> ${discOfAllDays[4].toString()}</strong>`;
 
-            getPhoto();
 
         })
         .catch(function (error) {

@@ -1,12 +1,16 @@
 * {
     font-family: 'Gaegu', cursive;
     font-size: 20px;
+    font-weight: bold;
+
 
 }
 
-h1{
+h1,
+h2{
     color: rebeccapurple;
     font-size: 60px;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -16,10 +20,19 @@ body {
 }
 
 .innerCards {
-    background-color: #0f6674;
+    background-color: #3eb5ff;
 }
 
 #dayOne {
     background-color: #64ffe1;
+}
 
+
+#days {
+    opacity: 0.75;
+
+}
+
+#tempToday {
+    font-size: larger;
 }

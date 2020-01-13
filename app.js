@@ -24,6 +24,19 @@ let frank = document.getElementById("frank");
 let daysDiv = document.getElementById("days");
 daysDiv.style.visibility = "hidden";
 
+//To return the day of the week
+let toDay = new Date();
+let weekdays = new Array(7);
+weekdays[0] = "Sunday";
+weekdays[1] = "Monday";
+weekdays[2] = "Tuesday";
+weekdays[3] = "Wednesday";
+weekdays[4] = "Thursday";
+weekdays[5] = "Friday";
+weekdays[6] = "Saturday";
+
+console.log(weekdays[toDay.getDay()+1]);
+
 
 //function to calculate average of array (temperature in this case)
 function average(array) {
@@ -88,9 +101,9 @@ let button = document.getElementById("frank").addEventListener("click", function
             //Putting temp in HTML
             tempDayHTML1.innerHTML = `Today's temperature in ${input.value} is ${avgTempDay1.toString()}°C`;
             tempDayHTML2.innerHTML = `Tomorrow's temperature in ${input.value} is ${avgTempDay2.toString()}°C`;
-            tempDayHTML3.innerHTML = `The temperature in ${input.value} 3 days from today is ${avgTempDay3.toString()}°C`;
-            tempDayHTML4.innerHTML = `The temperature in ${input.value} 4 days from today is ${avgTempDay4.toString()}°C`;
-            tempDayHTML5.innerHTML = `The temperature in ${input.value} 5 days from today is ${avgTempDay5.toString()}°C`;
+            tempDayHTML3.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+2]} is ${avgTempDay3.toString()}°C`;
+            tempDayHTML4.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+3]} is ${avgTempDay4.toString()}°C`;
+            tempDayHTML5.innerHTML = `The temperature in ${input.value} ${weekdays[toDay.getDay()+4]} is ${avgTempDay5.toString()}°C`;
 
             //Putting desc in HTML
             descDayHTML1.innerHTML = `We're expecting ${discOfAllDays[0].toString()}`;

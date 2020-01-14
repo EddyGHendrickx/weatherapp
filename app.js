@@ -54,8 +54,28 @@ let button = document.getElementById("frank").addEventListener("click", function
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input.value}&APPID=be8257068799ca9f1eccf80a6e84c26f`)
         .then(response => response.json())
         .then(data => {
+
+
+            // Getting the length of the remaining day
+            let toSlice;
+            let sliced = [];
+            let dateArray = [];
+            let lengthOfFirstDay = [];
+            for (l=0; l < data.list.length; l++) {
+                toSlice = data.list[l].dt_txt;
+                console.log(toSlice);
+                sliced.push(toSlice.slice(0, 10));
+                dateArray.push(new Date(sliced[l]).getDay());
+                if (dateArray[0] == dateArray[l]){
+                    lengthOfFirstDay.push(dateArray[l]);
+                }
+            }
+            console.log(dateArray);
+            console.log(lengthOfFirstDay.length);
+
             getPhoto();
             console.log(data);
+
             cityName.innerHTML = data.city.name;
             //Making empty array, to push new elements in it
             let tempOfAllDays = [];
@@ -65,6 +85,8 @@ let button = document.getElementById("frank").addEventListener("click", function
             for (i = 0; i < data.list.length; i++) {
                 tempOfAllDays.push(data.list[i].main.temp);
             }
+
+
             //Pushing the description, every 8 iterations, so I have 5 elements(one for each day)
             for (o = 0; o < data.list.length; o++) {
                 discOfAllDays.push(data.list[o].weather[0].description);
@@ -79,11 +101,11 @@ let button = document.getElementById("frank").addEventListener("click", function
 
             }
             //Slicing big array into smaller arrays, per day
-            var tempDay1 = tempOfAllDays.slice(0, 8);
-            var tempDay2 = tempOfAllDays.slice(8, 16);
-            var tempDay3 = tempOfAllDays.slice(16, 24);
-            var tempDay4 = tempOfAllDays.slice(24, 32);
-            var tempDay5 = tempOfAllDays.slice(32, 40);
+            var tempDay1 = tempOfAllDays.slice(0, lengthOfFirstDay.length);
+            var tempDay2 = tempOfAllDays.slice(lengthOfFirstDay.length, lengthOfFirstDay.length+8);
+            var tempDay3 = tempOfAllDays.slice(lengthOfFirstDay.length+8, lengthOfFirstDay.length+16);
+            var tempDay4 = tempOfAllDays.slice(lengthOfFirstDay.length+16, lengthOfFirstDay.length+24);
+            var tempDay5 = tempOfAllDays.slice(lengthOfFirstDay.length+24, tempOfAllDays.length);
 
             // Averaging temperature, and converting to Celcius
             var avgTempDay1 = average(tempDay1) - 273;
@@ -101,7 +123,7 @@ let button = document.getElementById("frank").addEventListener("click", function
 
             //Putting temp in HTML
             tempDayHTML1.innerHTML = `Today </br> <strong id="tempToday">${avgTempDay1.toString()}°C</strong>`;
-            tempDayHTML2.innerHTML = `Tomorrow </br> ${avgTempDay2.toString()}°C`;
+            tempDayHTML2.innerHTML = `Tomorrow-ish </br> ${avgTempDay2.toString()}°C`;
             tempDayHTML3.innerHTML = `${weekdays[toDay.getDay()+2]} </br> ${avgTempDay3.toString()}°C`;
             tempDayHTML4.innerHTML = `${weekdays[toDay.getDay()+3]} </br> ${avgTempDay4.toString()}°C`;
             tempDayHTML5.innerHTML = `${weekdays[toDay.getDay()+4]} </br> ${avgTempDay5.toString()}°C`;
@@ -124,12 +146,12 @@ let button = document.getElementById("frank").addEventListener("click", function
 
 });
 
-
+// Doing the same thing but using an async function.
 async function getPhoto(){
     let response = await fetch(`https://api.unsplash.com/search/photos?query=${input.value}&client_id=8b3303518e733b03bb9fbe890041915da381de31ef0602ad71dc8adfd4b79f83`);
     let data = await response.json();
     console.log(data.results[3]);
-    let bgPicture = data.results[2].urls.full;
+    let bgPicture = data.results[2].urls.regular;
     document.body.style.backgroundImage = `url(${bgPicture})`;
 }
 

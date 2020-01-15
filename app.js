@@ -27,7 +27,6 @@ let daysDiv = document.getElementById("days");
 daysDiv.style.visibility = "hidden";
 
 //To return the day of the week
-// I made it two weeks long, because else the today.getDay + 4 function would return an error if we're on sunday
 let toDay = new Date();
 let weekdays = new Array(7);
 weekdays[0] = "Sunday";
@@ -114,7 +113,7 @@ let button = document.getElementById("frank").addEventListener("click", function
             var tempDay2 = tempOfAllDays.slice(lengthOfFirstDay.length, lengthOfFirstDay.length+8);
             var tempDay3 = tempOfAllDays.slice(lengthOfFirstDay.length+8, lengthOfFirstDay.length+16);
             var tempDay4 = tempOfAllDays.slice(lengthOfFirstDay.length+16, lengthOfFirstDay.length+24);
-            var tempDay5 = tempOfAllDays.slice(lengthOfFirstDay.length+24, lengthOfFirstDay+32);
+            var tempDay5 = tempOfAllDays.slice(lengthOfFirstDay.length+24, tempOfAllDays.length);
 
             // Averaging temperature, and converting to Celcius
             var avgTempDay1 = average(tempDay1) - 273;
@@ -132,7 +131,7 @@ let button = document.getElementById("frank").addEventListener("click", function
 
             //Putting temp in HTML
             tempDayHTML1.innerHTML = `Today </br> <strong id="tempToday">${avgTempDay1.toString()}°C</strong>`;
-            tempDayHTML2.innerHTML = `Tomorrow </br> ${avgTempDay2.toString()}°C`;
+            tempDayHTML2.innerHTML = `Tomorrow-ish </br> ${avgTempDay2.toString()}°C`;
             tempDayHTML3.innerHTML = `${weekdays[toDay.getDay()+2]} </br> ${avgTempDay3.toString()}°C`;
             tempDayHTML4.innerHTML = `${weekdays[toDay.getDay()+3]} </br> ${avgTempDay4.toString()}°C`;
             tempDayHTML5.innerHTML = `${weekdays[toDay.getDay()+4]} </br> ${avgTempDay5.toString()}°C`;

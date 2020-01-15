@@ -37,6 +37,7 @@ weekdays[4] = "Thursday";
 weekdays[5] = "Friday";
 weekdays[6] = "Saturday";
 
+
 //function to calculate average of array (temperature in this case)
 function average(array) {
     return Math.round(array.reduce((a, b) => a + b) / array.length);
